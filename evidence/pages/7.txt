@@ -1,0 +1,292 @@
+ IP Ranges | Cloudflare 
+ Log in 
+ Sign up 
+ Languages
+ English 
+ English (United Kingdom) 
+ Deutsch 
+ Español (Latinoamérica) 
+ Español (España) 
+ Français 
+ Italiano 
+ 日本語 
+ 한국어 
+ Polski 
+ Português (Brasil) 
+ Русский 
+ 繁體中文 
+ 简体中文 
+ Platform 
+ Connectivity cloud Cloudflare’s connectivity cloud delivers 60+ networking, security, and performance services. 
+ Enterprise For large and medium organizations 
+ Small business For small organizations 
+ Partner Become a Cloudflare partner 
+ use cases
+ Modernize applications 
+ Accelerate performance 
+ Ensure app availability 
+ Optimize web experience 
+ Modernize security 
+ VPN replacement 
+ Phishing protection 
+ Secure web apps and APIs 
+ Modernize networks 
+ Coffee shop networking 
+ WAN modernization 
+ Network protection 
+ CxO topics
+ Adopt AI Bring AI into workforces and digital experiences 
+ AI security Secure agentic AI and GenAI applications 
+ Data compliance Streamline compliance and minimize risk 
+ Post-quantum cryptography Safeguard data and meet compliance standards 
+ Industries
+ Healthcare 
+ Financial services 
+ Retail 
+ Gaming 
+ Public sector 
+ Resources 
+ Product guides 
+ Reference architectures 
+ Analyst reports 
+ Engage
+ Events 
+ Demos 
+ Webinars 
+ Workshops 
+ Request a demo 
+ Products 
+ products
+ SASE (Cloudflare One) 
+ Zero trust network access 
+ Secure web gateway 
+ Network-as-a-service / SD-WAN 
+ Email security 
+ Application security 
+ L7 DDoS protection 
+ Web application firewall 
+ API security 
+ Bot management 
+ Application performance 
+ CDN 
+ DNS 
+ Smart routing 
+ Load balancing 
+ Networking 
+ L3/4 DDoS protection 
+ Firewall-as-a-service 
+ Network Interconnect 
+ Smart routing 
+ plans & pricing
+ Enterprise plans 
+ Small business plans 
+ Individual plans 
+ Compare plans 
+ Domain registration Buy and manage domains 
+ 1.1.1.1 Free DNS resolver 
+ Resources 
+ Product guides 
+ Reference architectures 
+ Analyst reports 
+ Product demos and tours 
+ Global services Expert-led success 
+ Help me choose 
+ Developers 
+ documentation
+ Developer library Documentation and guides 
+ Application demos Explore what you can build 
+ Tutorials Step-by-step build tutorials 
+ Reference architecture Diagrams and design patterns 
+ Products
+ Artificial Intelligence 
+ AI Gateway Observe, control AI apps 
+ Workers AI Run ML models on our network 
+ Compute 
+ Observability Logs, metrics, and traces 
+ Workers Build, deploy serverless apps 
+ Media 
+ Images Transform, optimize images 
+ Realtime Build real-time audio/video apps 
+ Storage & database 
+ D1 Create serverless SQL databases 
+ R2 Store data without costly egress fees 
+ Plans & Pricing
+ Workers Build and deploy serverless apps 
+ Workers KV Serverless key-value store for apps 
+ R2 Store data without costly egrees fees 
+ Explore projects Customer stories 
+ AI Demo in 30 seconds Quick guide to get started 
+ Explore Workers Playground Build, test, and deploy 
+ Developers Discord Join the community 
+ Start building 
+ Partners 
+ Partner Network Grow, innovate and meet customer needs with Cloudflare 
+ Partner Portal Find resources and register deals 
+ Partnership Types
+ PowerUP Program Grow your business while keeping your customers connected and secure 
+ Technology Partners Explore our ecosystem of technology partners and integrators 
+ Global System Integrators Support seamless large-scale digital transformation 
+ Service Providers Discover our network of valued service providers 
+ Self-serve agency program Manage Self-Serve Accounts for your clients 
+ Peer-to-peer portal Traffic insights for your network 
+ Find a partner PowerUP your business - connect with Cloudflare Powered+ partners. 
+ Resources 
+ Engage
+ Demos + product tours On-demand product demos 
+ Case studies Driving success with Cloudflare 
+ Webinars Insightful discussions 
+ Test Drive Live virtual workshops 
+ Library Helpful guides, roadmaps, and more 
+ Reports Insights from Cloudflare’s research 
+ Blog Technical deep dives and product news 
+ Learning center Educational tools and how-to content 
+ Build
+ Reference architecture Technical guides 
+ Solution + product guides Product documentation 
+ Documentation Developer documentation 
+ Explore
+ theNET Executive insights for the digital enterprise 
+ Cloudflare TV Innovative series and events 
+ Cloudforce One Threat research and operations 
+ Radar Internet traffic and security trends 
+ Analyst reports Industry research reports 
+ Events Upcoming regional events 
+ Trust, privacy, and compliance Compliance information and policies 
+ Support
+ Contact us 
+ Community forum 
+ Lost account access? 
+ Developers Discord 
+ Get help 
+ Company 
+ Company info
+ Leadership Meet our leaders 
+ Investor relations Investor information 
+ Press Explore recent news 
+ Careers Explore open roles 
+ Trust, Privacy, & Safety
+ Privacy Policy, data, and protection 
+ Trust Policy, process, and safety 
+ Compliance Certification and regulation 
+ Transparency Policy and disclosures 
+ Public Interest
+ Humanitarian Project Galileo 
+ Government Athenian Project 
+ Elections Cloudflare For Campaigns 
+ Health Project Fair Shot 
+ Global network Global locations and status 
+ Log in Contact sales 
+ IP Ranges
+ Last updated: Sep 28, 2023
+ Some applications or host providers might find it handy to know about Cloudflare’s IPs. This page is intended to be the definitive source of Cloudflare’s current IP ranges.
+ You can also use the Cloudflare API to access this list
+ IPv4
+ 103.21.244.0/22
+ 103.22.200.0/22
+ 103.31.4.0/22
+ 104.16.0.0/13
+ 104.24.0.0/14 
+ 108.162.192.0/18
+ 131.0.72.0/22
+ 141.101.64.0/18
+ 162.158.0.0/15
+ 172.64.0.0/13
+ 173.245.48.0/20
+ 188.114.96.0/20
+ 190.93.240.0/20
+ 197.234.240.0/22
+ 198.41.128.0/17
+ Also available as a IPv4 text list .
+ IPv6
+ 2400:cb00::/32
+ 2606:4700::/32
+ 2803:f800::/32
+ 2405:b500::/32
+ 2405:8100::/32
+ 2a06:98c0::/29
+ 2c0f:f248::/32
+ Also available as a IPv6 text list . 
+ Update History
+ Sep 28, 2023:
+ 2405:b500::/32 added to ips-v6 
+ May 9, 2022:
+ 2405:b500::/32 removed from ips-v6 
+ Apr 8, 2021:
+ 104.16.0.0/12 removed from ips-v4
+104.16.0.0/13 added to ips-v4
+104.24.0.0/14 added to ips-v4 
+ Oct 1, 2020:
+ IPS were confirmed, no changes 
+ Jun 7, 2017:
+ 199.27.128.0/21 removed from ips-v4 
+ Contact sales +1 (888) 99 FLARE 
+ Getting Started
+ Free plans
+ Small business plans
+ For enterprises
+ Get a recommendation
+ Request a demo
+ Contact sales
+ Solutions
+ Connectivity cloud
+ Application services
+ SASE (Cloudflare One)
+ Network services
+ Developer platform
+ Support
+ Help center
+ Customer support
+ Community forum
+ Developers Discord
+ Lost account access?
+ Cloudflare status
+ Compliance
+ Compliance resources
+ Trust
+ GDPR
+ Responsible AI
+ Transparency report
+ Report abuse
+ Company
+ About Cloudflare
+ Network map 
+ Our team
+ Logos & press kit
+ Diversity, equity, & inclusion
+ Impact/ESG
+ Getting Started Free plans 
+ Small business plans 
+ For enterprises 
+ Get a recommendation 
+ Request a demo 
+ Contact sales 
+ Solutions Connectivity cloud 
+ Application services 
+ SASE (Cloudflare One) 
+ Network services 
+ Developer platform 
+ Support Help center 
+ Customer support 
+ Community forum 
+ Developers Discord 
+ Lost account access? 
+ Cloudflare status 
+ Compliance Compliance resources 
+ Trust 
+ GDPR 
+ Responsible AI 
+ Transparency report 
+ Report abuse 
+ Company About Cloudflare 
+ Network map 
+ Our team 
+ Logos & press kit 
+ Diversity, equity, & inclusion 
+ Impact/ESG 
+ © 2026 Cloudflare, Inc.
+ Privacy policy
+ Terms of use
+ Report security issues
+ Your privacy choices 
+ Trademark
+ 

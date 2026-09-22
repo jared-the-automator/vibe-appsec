@@ -1,0 +1,269 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 3,
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_Cheat_Sheet.html",
+      "title": "OWASP JWT Cheat Sheet",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "Some JWT libraries, used to accept unsecured JWTs by default ( \"alg\":\"none\" ). In this case, an attacker would be able to forge their own JWTs",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "Make sure that \"alg\":\"none\" is not accepted by your JWT parser.",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "url": "https://datatracker.ietf.org/doc/html/rfc8725",
+      "title": "RFC 8725 JWT Threats",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "The algorithm can be changed to \"none\" by an attacker, and some libraries would trust this value and \"validate\" the JWT without checking any signature",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "An \"RS256\" (RSA, 2048 bit) parameter value can be changed into \"HS256\" (HMAC, SHA-256), and some libraries would try to validate the signature using HMAC-SHA256 and using the RSA public key as the HMAC",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "url": "https://datatracker.ietf.org/doc/html/rfc6749",
+      "title": "RFC 6749 OAuth 2.0",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "the authorization server MUST ensure that the redirection URI used to obtain the authorization code is identical to the redirection URI provided when exchanging the authorization code for an access token",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "The client MUST implement CSRF protection for its redirection URI",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "The client SHOULD utilize the \"state\" request parameter to deliver this value to the authorization server when making an authorization request",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "the authorization server MUST validate it against the registered value",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "url": "https://datatracker.ietf.org/doc/html/rfc7519",
+      "title": "RFC 7519 JWS",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "An Unsecured JWT is a JWS using the \"alg\" Header Parameter value \"none\" and with the empty string for its JWS Signature value",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "url": "https://www.cloudflare.com/ips",
+      "title": "Cloudflare current IP ranges",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "You can also use the Cloudflare API to access this list",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "url": "https://github.com/gitleaks/gitleaks",
+      "title": "gitleaks",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "Find secrets with Gitleaks",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "url": "https://github.com/advisories",
+      "title": "GitHub Advisory Database",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "Security vulnerability database inclusive of CVEs and GitHub originated security advisories from the world of open source software",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "url": "https://docs.npmjs.com/cli/commands/npm-audit",
+      "title": "npm audit docs",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "The audit command submits a description of the dependencies configured in your project to your default registry and asks for a report of known vulnerabilities",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "By default, the audit command will exit with a non-zero code if any vulnerability is found",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "url": "https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection",
+      "title": "Embrace The Red: Copilot RCE via prompt injection",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "This post is about an important, but also scary, prompt injection discovery that leads to full system compromise of the developer\u2019s machine in GitHub Copilot and VS Code",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-53773",
+      "title": "NVD CVE-2025-53773",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "Improper neutralization of special elements used in a command ('command injection') in GitHub Copilot and Visual Studio allows an unauthorized attacker to execute code locally.",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "url": "https://datatracker.ietf.org/doc/html/rfc7489",
+      "title": "RFC 7489 DMARC",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "DMARC is designed to prevent bad actors from sending mail that claims to come from legitimate senders, particularly senders of transactional email",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "One of the primary uses of this kind of spoofed mail is phishing (enticing users to provide information by pretending to be the legitimate service requesting the information)",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "url": "https://github.com/papra-hq/papra/security/advisories/GHSA-6f8x-2rc9-vgh4",
+      "title": "GHSA-6f8x-2rc9-vgh4 email HTML injection",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "phishing emails crafted using this vulnerability will pass SPF, DKIM, and DMARC checks and appear completely authentic to email security filters and recipients",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "title": "EU AI Act Regulation 2024/1689",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "transparency obligations for certain AI systems",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "url": "https://owasp.org/www-community/attacks/Credential_stuffing",
+      "title": "OWASP credential stuffing",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "Credential Stuffing typically refers to specifically using known (breached) username / password pairs against other websites",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "The attacker uses automated tools to test the stolen credentials against many websites (for instance, social media sites, online marketplaces, or web apps)",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "Multi-Factor Authentication being a primary counter-measure",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "url": "https://www.zaproxy.org",
+      "title": "OWASP ZAP",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "Zed Attack Proxy (ZAP) by The world\u2019s most widely used web app scanner.",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "ZAP provides range of options for security automation.",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "url": "https://portswigger.net/burp",
+      "title": "Burp Suite",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "The enterprise-enabled dynamic web vulnerability scanner",
+          "added": "2026-09-22"
+        },
+        {
+          "text": "The world's #1 web penetration testing toolkit.",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "url": "https://artificialintelligenceact.eu/article/50",
+      "title": "EU AI Act Article 50 (AI Act Explorer mirror)",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system",
+          "added": "2026-09-22"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "url": "https://www.legitsecurity.com/blog/camoleak-critical-github-copilot-vulnerability-leaks-private-source-code",
+      "title": "Legit Security: CamoLeak disclosure",
+      "accessed": "2026-09-22",
+      "quotes": [
+        {
+          "text": "a critical vulnerability in GitHub Copilot Chat (CVSS 9.6) that allowed silent exfiltration of secrets and source code from private repos",
+          "added": "2026-09-22"
+        }
+      ]
+    }
+  ]
+}

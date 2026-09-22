@@ -1,0 +1,299 @@
+
+ HTML Injection in Transactional Emails via Unescaped User Display Name · Advisory · papra-hq/papra · GitHub 
+ Skip to content 
+ Navigation Menu
+ Sign in Appearance settings
+ Platform AI CODE CREATION GitHub Copilot Write better code with AI 
+ GitHub Copilot app Direct agents from issue to merge 
+ MCP Registry Integrate external tools 
+ DEVELOPER WORKFLOWS Actions Automate any workflow 
+ Codespaces Instant dev environments 
+ Issues Plan and track work 
+ Code Review Manage code changes 
+ Code Quality Enforce quality at merge 
+ APPLICATION SECURITY GitHub Advanced Security Find and fix vulnerabilities 
+ Code security Secure your code as you build 
+ Secret protection Stop leaks before they start 
+ EXPLORE Why GitHub 
+ Documentation 
+ Blog 
+ Changelog 
+ Marketplace 
+ View all features 
+ Solutions BY COMPANY SIZE Enterprises 
+ Small and medium teams 
+ Startups 
+ Nonprofits 
+ BY USE CASE App Modernization 
+ DevSecOps 
+ DevOps 
+ CI/CD 
+ View all use cases 
+ BY INDUSTRY Healthcare 
+ Financial services 
+ Manufacturing 
+ Government 
+ View all industries 
+ View all solutions 
+ Resources EXPLORE BY TOPIC AI 
+ Software Development 
+ DevOps 
+ Security 
+ View all topics 
+ EXPLORE BY TYPE Customer stories 
+ Events & webinars 
+ Ebooks & reports 
+ Business insights 
+ GitHub Skills 
+ SUPPORT & SERVICES Documentation 
+ Customer support 
+ Community forum 
+ Trust center 
+ Partners 
+ View all resources 
+ Open Source COMMUNITY GitHub Sponsors Fund open source developers 
+ PROGRAMS Security Lab 
+ Maintainer Community 
+ GitHub Stars 
+ Archive Program 
+ REPOSITORIES Topics 
+ Trending 
+ Collections 
+ Enterprise ENTERPRISE SOLUTIONS Enterprise platform AI-powered developer platform 
+ AVAILABLE ADD-ONS GitHub Advanced Security Enterprise-grade security features 
+ Copilot for Business Enterprise-grade AI features 
+ Premium Support Enterprise-grade 24/7 support 
+ Pricing 
+ Search / 
+ Sign in 
+ Sign up Appearance settings
+ You signed in with another tab or window. Reload to refresh your session. 
+ You signed out in another tab or window. Reload to refresh your session. 
+ You switched accounts on another tab or window. Reload to refresh your session. 
+ Dismiss alert 
+ {{ message }}
+ papra-hq
+ / 
+ papra 
+ Public 
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ Notifications
+ You must be signed in to change notification settings 
+ Fork
+ 304 
+ Star
+ 5.5k 
+ Code 
+ Issues 
+ 147 
+ Pull requests 
+ 33 
+ Actions 
+ Projects 
+ Security and quality 
+ 7 
+ Insights 
+ Additional navigation options 
+ Code
+ Issues
+ Pull requests
+ Actions
+ Projects
+ Security and quality
+ Insights
+ papra 
+ Security 
+ Advisories 
+ GHSA-6f8x-2rc9-vgh4 
+ HTML Injection in Transactional Emails via Unescaped User Display Name
+ Moderate
+ CorentinTh 
+ published
+ GHSA-6f8x-2rc9-vgh4 
+ Apr 2, 2026 
+ Package
+ ghcr.io/papra-hq/papra 
+ (Docker (ghcr.io))
+ Affected versions
+ <= 26.3.0
+ Patched versions
+ 26.4.0
+ Description
+ Summary
+ Two transactional email templates in Papra interpolate user.name directly
+into HTML without escaping or sanitization. An attacker who registers with
+a display name containing HTML tags will have those tags injected into the
+verification and password reset email bodies. Since emails are sent from the
+legitimate domain (e.g: auth@mail.papra.app ), this enables convincing
+phishing attacks that appear to originate from official Papra notifications.
+ Details
+ Root Cause: auth.emails.services.ts: raw interpolation of user.name 
+ Both transactional email templates embed user.name directly into HTML
+with no escaping:
+ // apps/papra-server/src/modules/app/auth/auth.emails.services.ts 
+ // sendVerificationEmail 
+ html : ` 
+ <p>Hello ${ user . name } ,</p> 
+ <p>Verify your email by clicking <a href=" ${ url } ">here</a></p> 
+ ` . trim ( ) , 
+ // sendPasswordResetEmail — identical pattern 
+ html : ` 
+ < p > Hello ${ user . name } , </ p > 
+ < p > Reset your password by clicking < a href =" ${ url } " > here </ a > </ p > 
+ ` . trim ( ) , 
+ The fix exists in the codebase but was not applied here 
+ The organization invitation email correctly sanitizes user-controlled input:
+ // apps/papra-server/src/modules/organizations/organizations.usecases.ts 
+ import { sanitize } from '../shared/html/html' ; 
+ const organizationName = sanitize ( organization . name ) ; // protected 
+ The sanitize() function and sanitize-html package are already a
+dependency. The auth email service was simply missed.
+ PoC
+ Environment: Papra 26.3.0 ( ghcr.io/papra-hq/papra:latest )
+ Setup: Self-hosted Docker, default configuration
+ Confirmed via: Docker email logger ( EMAILS_DRY_RUN=true )
+ Step 1: Register an account with an HTML injection payload as the display name: 
+ curl -s -X POST http://localhost:1221/api/auth/sign-up/email \
+ -H " Content-Type: application/json " \
+ -d ' { 
+ "email": "test-injection@example.com", 
+ "password": "Password123!", 
+ "name": "</p><b style=\"color:red\">INJECTED</b><p>" 
+ } ' | jq . 
+ Response confirms the raw payload is stored as the user name:
+ {
+ "token" : " 7X3kNLu3Wi4EFnbAdHo5ubQ2HamKdDyi " ,
+ "user" : {
+ "name" : " </p><b style= \" color:red \" >INJECTED</b><p> " ,
+ "email" : " test-injection@example.com " ,
+ "emailVerified" : false ,
+ "id" : " usr_knorq46yryw326lxy2q90u43 " 
+ }
+}
+ Step 2: Trigger a password reset email for the injected account: 
+ curl -s -X POST http://localhost:1221/api/auth/request-password-reset \
+ -H " Content-Type: application/json " \
+ -d ' {"email": "test-injection@example.com"} ' | jq . 
+ Step 3: Observe the raw HTML payload in the sent email: 
+ docker logs papra 2>&1 | grep " Sending email " | grep " test-injection " | python3 -m json.tool
+ Actual email logger output: 
+ {
+ "level" : " info " ,
+ "message" : " Sending email " ,
+ "timestampMs" : 1774895828018 ,
+ "namespace" : " emails.services " ,
+ "data" : {
+ "to" : " test-injection@example.com " ,
+ "subject" : " Reset your password " ,
+ "from" : " Papra <auth@mail.papra.app> " ,
+ "html" : " <p>Hello </p><b style= \" color:red \" >INJECTED</b><p>,</p> \n <p>Reset your password by clicking <a href= \" ... \" >here</a></p> \n <p>Or by pasting the following link into your browser: ...</p> \n <p style= \" color: #888; \" >Best regards,</p> \n <p style= \" color: #888; \" >The Papra team</p> " 
+ }
+}
+ The injected payload successfully broke out of the <p>Hello ...</p> tag.
+The rendered email HTML becomes:
+ < p > Hello </ p > 
+ < b style =" color:red " > INJECTED </ b > 
+ < p > , </ p > 
+ < p > Reset your password by clicking < a href =" ... " > here </ a > </ p > 
+ Instead of the safe escaped version:
+ < p > Hello &lt;/p&gt;&lt;b style=&quot;color:red&quot;&gt;INJECTED&lt;/b&gt;&lt;p&gt;, </ p > 
+ The resulting email — sent from auth@mail.papra.app or any validated self hosted domain — would show only
+the attacker's fake link with no legitimate reset button visible.
+ Expected: user.name escaped as &lt;/p&gt;&lt;b&gt;... 
+ Actual: Raw HTML tags injected into email body, breaking document structure
+ Impact
+ The vulnerability affects any Papra deployment where email is configured.
+Both sendVerificationEmail and sendPasswordResetEmail are affected.
+ Since emails are sent from the legitimate domains
+(e.g: auth@mail.papra.app ), phishing emails crafted using this vulnerability
+will pass SPF, DKIM, and DMARC checks and appear completely authentic to
+email security filters and recipients.
+ Specific attack scenarios include replacing legitimate verification or
+reset links with attacker-controlled URLs, injecting fake security warnings
+to trick users into visiting malicious sites, and embedding tracking pixels
+or external resources to confirm email delivery and user activity.
+ The frontend correctly escapes user names when displaying them in the UI.
+The vulnerability is isolated to the email templates.
+ Suggested Fix
+ Apply the existing sanitize() function to user.name before interpolation,
+consistent with how organization names are already handled:
+ import { sanitize } from '../shared/html/html' ; 
+ // sendVerificationEmail 
+ html : ` 
+ <p>Hello ${ sanitize ( user . name ) } ,</p> 
+ <p>Verify your email by clicking <a href=" ${ url } ">here</a></p> 
+ ` . trim ( ) , 
+ // sendPasswordResetEmail 
+ html : ` 
+ < p > Hello ${ sanitize ( user . name ) } , </ p > 
+ < p > Reset your password by clicking < a href =" ${ url } " > here </ a > </ p > 
+ ` . trim ( ) , 
+ Alternatively use he or html-escaper for lightweight HTML entity
+encoding if full sanitization is not desired.
+ Severity
+ Moderate
+ 4.3 
+ CVSS overall score
+ This score calculates overall vulnerability severity from 0 to 10 and is based on the Common Vulnerability Scoring System (CVSS). 
+ / 10 
+ CVSS v3 base metrics
+ Attack vector
+ Network
+ Attack complexity
+ Low
+ Privileges required
+ Low
+ User interaction
+ None
+ Scope
+ Unchanged
+ Confidentiality
+ None
+ Integrity
+ Low
+ Availability
+ None
+ Learn more about base metrics 
+ CVSS v3 base metrics
+ Attack vector: 
+ More severe the more the remote (logically and physically) an attacker can be in order to exploit the vulnerability. 
+ Attack complexity: 
+ More severe for the least complex attacks. 
+ Privileges required: 
+ More severe if no privileges are required. 
+ User interaction: 
+ More severe when no user interaction is required. 
+ Scope: 
+ More severe when a scope change occurs, e.g. one vulnerable component impacts resources in components beyond its security scope. 
+ Confidentiality: 
+ More severe when loss of data confidentiality is highest, measuring the level of data access available to an unauthorized user. 
+ Integrity: 
+ More severe when loss of data integrity is the highest, measuring the consequence of data modification possible by an unauthorized user. 
+ Availability: 
+ More severe when the loss of impacted component availability is highest. 
+ CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N
+ CVE ID
+ CVE-2026-35460
+ Weaknesses
+ Weakness 
+ CWE-80 
+ Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) 
+ The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special characters such as <, >, and & that could be interpreted as web-scripting elements when they are sent to a downstream component that processes web pages.
+ Learn more on MITRE. 
+ Credits
+ Toothless5143 
+ Reporter 
+ Footer
+ © 2026 GitHub, Inc.
+ Footer navigation
+ Terms 
+ Privacy 
+ Security 
+ Status 
+ Community 
+ Docs 
+ Contact 
+ Manage cookies
+ Do not share my personal information
+ You can’t perform that action at this time.

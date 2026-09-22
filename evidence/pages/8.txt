@@ -1,0 +1,272 @@
+
+ GitHub - gitleaks/gitleaks: Find secrets with Gitleaks 🔑 · GitHub 
+ Skip to content 
+ Navigation Menu
+ Sign in Appearance settings
+ Platform AI CODE CREATION GitHub Copilot Write better code with AI 
+ GitHub Copilot app Direct agents from issue to merge 
+ MCP Registry Integrate external tools 
+ DEVELOPER WORKFLOWS Actions Automate any workflow 
+ Codespaces Instant dev environments 
+ Issues Plan and track work 
+ Code Review Manage code changes 
+ Code Quality Enforce quality at merge 
+ APPLICATION SECURITY GitHub Advanced Security Find and fix vulnerabilities 
+ Code security Secure your code as you build 
+ Secret protection Stop leaks before they start 
+ EXPLORE Why GitHub 
+ Documentation 
+ Blog 
+ Changelog 
+ Marketplace 
+ View all features 
+ Solutions BY COMPANY SIZE Enterprises 
+ Small and medium teams 
+ Startups 
+ Nonprofits 
+ BY USE CASE App Modernization 
+ DevSecOps 
+ DevOps 
+ CI/CD 
+ View all use cases 
+ BY INDUSTRY Healthcare 
+ Financial services 
+ Manufacturing 
+ Government 
+ View all industries 
+ View all solutions 
+ Resources EXPLORE BY TOPIC AI 
+ Software Development 
+ DevOps 
+ Security 
+ View all topics 
+ EXPLORE BY TYPE Customer stories 
+ Events & webinars 
+ Ebooks & reports 
+ Business insights 
+ GitHub Skills 
+ SUPPORT & SERVICES Documentation 
+ Customer support 
+ Community forum 
+ Trust center 
+ Partners 
+ View all resources 
+ Open Source COMMUNITY GitHub Sponsors Fund open source developers 
+ PROGRAMS Security Lab 
+ Maintainer Community 
+ GitHub Stars 
+ Archive Program 
+ REPOSITORIES Topics 
+ Trending 
+ Collections 
+ Enterprise ENTERPRISE SOLUTIONS Enterprise platform AI-powered developer platform 
+ AVAILABLE ADD-ONS GitHub Advanced Security Enterprise-grade security features 
+ Copilot for Business Enterprise-grade AI features 
+ Premium Support Enterprise-grade 24/7 support 
+ Pricing 
+ Search / 
+ Sign in 
+ Sign up Appearance settings
+ You signed in with another tab or window. Reload to refresh your session. 
+ You signed out in another tab or window. Reload to refresh your session. 
+ You switched accounts on another tab or window. Reload to refresh your session. 
+ Dismiss alert 
+ {{ message }}
+ gitleaks
+ / 
+ gitleaks 
+ Public 
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ Notifications
+ You must be signed in to change notification settings 
+ Fork
+ 2.2k 
+ Star
+ 29.4k 
+ Code 
+ Issues 
+ 269 
+ Pull requests 
+ 213 
+ Discussions 
+ Actions 
+ Projects 
+ Security and quality 
+ 0 
+ Insights 
+ Additional navigation options 
+ Code
+ Issues
+ Pull requests
+ Discussions
+ Actions
+ Projects
+ Security and quality
+ Insights
+ master 
+ Branches Tags 
+ Go to file 
+ Code Open more actions menu 
+ Latest commit
+ History
+ 1,291 Commits 
+ 1,291 Commits 
+ Folders and files
+ Name Name Last commit message 
+ Last commit date 
+ .github 
+ .github 
+ cmd 
+ cmd 
+ config 
+ config 
+ detect 
+ detect 
+ logging 
+ logging 
+ regexp 
+ regexp 
+ report 
+ report 
+ report_templates 
+ report_templates 
+ scripts 
+ scripts 
+ sources 
+ sources 
+ testdata 
+ testdata 
+ version 
+ version 
+ .gitignore 
+ .gitignore 
+ .gitleaks.toml 
+ .gitleaks.toml 
+ .gitleaksignore 
+ .gitleaksignore 
+ .golangci.yaml 
+ .golangci.yaml 
+ .goreleaser.yml 
+ .goreleaser.yml 
+ .pre-commit-hooks.yaml 
+ .pre-commit-hooks.yaml 
+ CONTRIBUTING.md 
+ CONTRIBUTING.md 
+ Dockerfile 
+ Dockerfile 
+ LICENSE 
+ LICENSE 
+ Makefile 
+ Makefile 
+ README.md 
+ README.md 
+ SECURITY.md 
+ SECURITY.md 
+ USERS.md 
+ USERS.md 
+ go.mod 
+ go.mod 
+ go.sum 
+ go.sum 
+ main.go 
+ main.go 
+ View all files 
+ Repository files navigation
+ README 
+ Contributing 
+ MIT license 
+ Security 
+ More items 
+ Gitleaks
+ ┌─○───┐
+│ │╲ │
+│ │ ○ │
+│ ○ ░ │
+└─░───┘
+ Warning
+ Gitleaks is feature complete. I'm not merging new features into Gitleaks. Future releases will be security patches only. I'm shifting my focus to Betterleaks 
+ Gitleaks is a tool for detecting secrets like passwords, API keys, and tokens in git repos, files, and whatever else you wanna throw at it via stdin . If you wanna learn more about how the detection engine works check out this blog: Regex is (almost) all you need .
+ ➜ ~/code(master) gitleaks git -v
+ ○
+ │╲
+ │ ○
+ ○ ░
+ ░ gitleaks
+Finding: "export BUNDLE_ENTERPRISE__CONTRIBSYS__COM=cafebabe:deadbeef",
+Secret: cafebabe:deadbeef
+RuleID: sidekiq-secret
+Entropy: 2.609850
+File: cmd/generate/config/rules/sidekiq.go
+Line: 23
+Commit: cd5226711335c68be1e720b318b7bc3135a30eb2
+Author: John
+Email: john@users.noreply.github.com
+Date: 2022-08-03T12:31:40Z
+Fingerprint: cd5226711335c68be1e720b318b7bc3135a30eb2:cmd/generate/config/rules/sidekiq.go:sidekiq-secret:23
+ Getting Started
+ Gitleaks can be installed using Homebrew, Docker, or Go. Gitleaks is also available in binary form for many popular platforms and OS types on the releases page . In addition, Gitleaks can be implemented as a pre-commit hook directly in your repo or as a GitHub action using Gitleaks-Action .
+ Installing
+ # MacOS 
+brew install gitleaks
+ # Docker (DockerHub) 
+docker pull zricethezav/gitleaks:latest
+docker run -v ${path_to_host_folder_to_scan} :/path zricethezav/gitleaks:latest [COMMAND] [OPTIONS] [SOURCE_PATH]
+ # Docker (ghcr.io) 
+docker pull ghcr.io/gitleaks/gitleaks:latest
+docker run -v ${path_to_host_folder_to_scan} :/path ghcr.io/gitleaks/gitleaks:latest [COMMAND] [OPTIONS] [SOURCE_PATH]
+ # From Source (make sure `go` is installed) 
+git clone https://github.com/gitleaks/gitleaks.git
+ cd gitleaks
+make build
+ Pre-Commit
+ Install pre-commit from https://pre-commit.com/#install 
+ Create a .pre-commit-config.yaml file at the root of your repository with the following content:
+ repos:
+ - repo: https://github.com/gitleaks/gitleaks
+ rev: v8.24.2
+ hooks:
+ - id: gitleaks
+ for a native execution of gitleaks or use the gitleaks-docker pre-commit ID for executing gitleaks using the official Docker images 
+ Auto-update the config to the latest repos' versions by executing pre-commit autoupdate 
+ Install with pre-commit install 
+ Now you're all set!
+ ➜ git commit -m "this commit contains a secret"
+Detect hardcoded secrets.................................................Failed
+ Note: to disable the gitleaks pre-commit hook you can prepend SKIP=gitleaks to the commit command
+and it will skip running gitleaks
+ ➜ SKIP=gitleaks git commit -m "skip gitleaks check"
+Detect hardcoded secrets................................................Skipped
+ Usage
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Gitleaks scans code, past or present, for secrets
+Usage:
+ gitleaks [command]
+Available Commands:
+ completion Generate the autocompletion script for the specified shell
+ dir scan directories or files for secrets
+ git scan git repositories for secrets
+ help Help about any command
+ stdin detect secrets from stdin
+ version display gitleaks version
+Flags:
+ -b, --baseline-path string path to baseline with issues that can be ignored
+ -c, --config string config file path
+ order of precedence:
+ 1. --config/-c
+ 2. env var GITLEAKS_CONFIG
+ 3. env var GITLEAKS_CONFIG_TOML with the file content
+ 4. (target path)/.gitleaks.toml
+ If none of the four options are used, then gitleaks will use the default config
+ --diagnostics string enable diagnostics (http OR comma-separated list: cpu,mem,trace). cpu=CPU prof, mem=memory prof, trace=exec tracing, http=serve via net/http/pprof
+ --diagnostics-dir string directory to store diagnostics output files when not using http mode (defaults to current directory)
+ --enable-rule strings only enable specific rules by id
+ --exit-code int exit code when leaks have been encountered (default 1)
+ -i, --gitleaks-ignore-path string path to .gitleaksignore file or folder containing one (default ".")
+ -h, --help help for gitleaks
+ --ignore-gitleaks-allow ignore gitleaks:allow comments
+ -l, --log-level string log level (trace, debug, info, warn, error, fatal) (default "info")
+ --max-archive-depth int allow scanning into nested archives up to this depth (default "0", no archive traversal is done)
+ --max-decode-depth int allow recursive decoding up to this depth (default "0", no decoding is done)
+ --max-target-megabytes int files larger than this will be skipped
+ --no-banner suppress banner
+ --no-color 

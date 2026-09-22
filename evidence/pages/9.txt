@@ -1,0 +1,462 @@
+
+ GitHub Advisory Database · GitHub 
+ Skip to content 
+ Navigation Menu
+ Sign in Appearance settings
+ GitHub Advisory Database 
+ Platform AI CODE CREATION GitHub Copilot Write better code with AI 
+ GitHub Copilot app Direct agents from issue to merge 
+ MCP Registry Integrate external tools 
+ DEVELOPER WORKFLOWS Actions Automate any workflow 
+ Codespaces Instant dev environments 
+ Issues Plan and track work 
+ Code Review Manage code changes 
+ Code Quality Enforce quality at merge 
+ APPLICATION SECURITY GitHub Advanced Security Find and fix vulnerabilities 
+ Code security Secure your code as you build 
+ Secret protection Stop leaks before they start 
+ EXPLORE Why GitHub 
+ Documentation 
+ Blog 
+ Changelog 
+ Marketplace 
+ View all features 
+ Solutions BY COMPANY SIZE Enterprises 
+ Small and medium teams 
+ Startups 
+ Nonprofits 
+ BY USE CASE App Modernization 
+ DevSecOps 
+ DevOps 
+ CI/CD 
+ View all use cases 
+ BY INDUSTRY Healthcare 
+ Financial services 
+ Manufacturing 
+ Government 
+ View all industries 
+ View all solutions 
+ Resources EXPLORE BY TOPIC AI 
+ Software Development 
+ DevOps 
+ Security 
+ View all topics 
+ EXPLORE BY TYPE Customer stories 
+ Events & webinars 
+ Ebooks & reports 
+ Business insights 
+ GitHub Skills 
+ SUPPORT & SERVICES Documentation 
+ Customer support 
+ Community forum 
+ Trust center 
+ Partners 
+ View all resources 
+ Open Source COMMUNITY GitHub Sponsors Fund open source developers 
+ PROGRAMS Security Lab 
+ Maintainer Community 
+ GitHub Stars 
+ Archive Program 
+ REPOSITORIES Topics 
+ Trending 
+ Collections 
+ Enterprise ENTERPRISE SOLUTIONS Enterprise platform AI-powered developer platform 
+ AVAILABLE ADD-ONS GitHub Advanced Security Enterprise-grade security features 
+ Copilot for Business Enterprise-grade AI features 
+ Premium Support Enterprise-grade 24/7 support 
+ Pricing 
+ Search / 
+ Sign in 
+ Sign up Appearance settings
+ You signed in with another tab or window. Reload to refresh your session. 
+ You signed out in another tab or window. Reload to refresh your session. 
+ You switched accounts on another tab or window. Reload to refresh your session. 
+ Dismiss alert 
+ {{ message }}
+ GitHub Advisory Database
+ Security vulnerability database inclusive of CVEs and GitHub originated security advisories from the world of open source software.
+ Filter advisories
+ GitHub reviewed advisories
+ All reviewed
+ 35,785 
+ Composer
+ 6,532 
+ Erlang
+ 116 
+ GitHub Actions
+ 55 
+ Go
+ 4,803 
+ Maven
+ 7,105 
+ npm
+ 7,439 
+ NuGet
+ 1,124 
+ pip
+ 6,275 
+ Pub
+ 13 
+ RubyGems
+ 1,152 
+ Rust
+ 1,577 
+ Swift
+ 62 
+ Unreviewed advisories
+ All unreviewed
+ 339,913 
+ Malware advisories
+ All malware
+ 123,652 
+ Composer
+ 2 
+ Go
+ 18 
+ Maven
+ 2 
+ npm
+ 108,118 
+ NuGet
+ 264 
+ pip
+ 11,718 
+ RubyGems
+ 3,510 
+ Rust
+ 20 
+ CC-BY-4.0 License 
+ Language support 
+ About GitHub Advisory Database 
+ Filter advisories
+ Filter advisories
+ GitHub reviewed advisories
+ All reviewed
+ 5,000+ 
+ Composer
+ 5,000+ 
+ Erlang
+ 116 
+ GitHub Actions
+ 55 
+ Go
+ 4,803 
+ Maven
+ 5,000+ 
+ npm
+ 5,000+ 
+ NuGet
+ 1,124 
+ pip
+ 5,000+ 
+ Pub
+ 13 
+ RubyGems
+ 1,152 
+ Rust
+ 1,577 
+ Swift
+ 62 
+ Unreviewed advisories
+ All unreviewed
+ 5,000+ 
+ Malware advisories
+ All malware
+ 5,000+ 
+ Composer
+ 2 
+ Go
+ 18 
+ Maven
+ 2 
+ npm
+ 5,000+ 
+ NuGet
+ 264 
+ pip
+ 5,000+ 
+ RubyGems
+ 3,510 
+ Rust
+ 20 
+ --> 
+ Search
+ 35,785 advisories
+ Filter by severity 
+ Filter by CWE 
+ Sort by 
+ Severity
+ Filter by severity 
+ All severities
+ Low
+ Moderate
+ High
+ Critical
+ CWE
+ Loading 
+ Uh oh!
+ There was an error while loading. Please reload this page .
+ Sort
+ Sort by 
+ Newest
+ Oldest
+ Recently updated
+ Least recently updated
+ SIPGO: DoS via unvalidated Content-Length in the stream parser
+ High
+ CVE-2026-58268
+ was published
+ for
+ github.com/emiago/sipgo
+ (Go)
+ Sep 22, 2026 
+ Credited to arkark 
+ deepstream: PATCH_MULTI action bypasses Valve permission system allowing unauthorized record writes
+ High
+ CVE-2026-63116
+ was published
+ for
+ @deepstream/server
+ (npm)
+ Sep 22, 2026 
+ Credited to manus-use 
+ request-filtering-agent: Synchronous throw from createConnection() for literal private-IP hosts bypasses req.on('error'), crashing the Node.js process
+ High
+ CVE-2026-62985
+ was published
+ for
+ request-filtering-agent
+ (npm)
+ Sep 22, 2026 
+ Credited to usama0x01 
+ Dasel: Selector lexer panics on trailing whitespace in `parseCurRune`
+ Moderate
+ CVE-2026-62866
+ was published
+ for
+ github.com/tomwright/dasel/v3
+ (Go)
+ Sep 22, 2026 
+ Credited to vnykmshr 
+ Dasel: Unbounded recursion in JSON and XML readers causes unrecoverable stack-overflow DoS
+ Moderate
+ CVE-2026-59168
+ was published
+ for
+ github.com/tomwright/dasel/v3
+ (Go)
+ Sep 22, 2026 
+ Credited to vmfunc 
+ OpenCVE: Server-Side Request Forgery (SSRF) in notifications
+ Moderate
+ CVE-2026-62282
+ was published
+ for
+ opencve
+ (pip)
+ Sep 22, 2026 
+ Credited to geo-chen 
+ psd-tools composite/numpy has uncontrolled memory allocation via crafted PSD geometry
+ High
+ CVE-2026-59991
+ was published
+ for
+ psd-tools
+ (pip)
+ Sep 22, 2026 
+ Credited to joszamama 
+ microsandbox: Secret values exposed in world-readable process arguments
+ Moderate
+ CVE-2026-61670
+ was published
+ for
+ microsandbox
+ (Rust)
+ Sep 22, 2026 
+ Credited to nopcorn 
+ 9Router has a Login Brute-Force Lockout Bypass via Spoofable X-9r-Real-Ip Header
+ Moderate
+ CVE-2026-56682
+ was published
+ for
+ 9router
+ (npm)
+ Sep 22, 2026 
+ Credited to b401t 
+ 9Router has an Authentication Bypass in Public LLM API via Spoofable X-9r-Real-Ip Header
+ High
+ CVE-2026-56681
+ was published
+ for
+ 9router
+ (npm)
+ Sep 22, 2026 
+ Credited to b401t 
+ @aborruso/ckan-mcp-server has SSRF via DNS-name → internal IP — incomplete fix of CVE-2026-53509
+ Moderate
+ CVE-2026-61612
+ was published
+ for
+ @aborruso/ckan-mcp-server
+ (npm)
+ Sep 22, 2026 
+ Credited to EchoSkorJjj 
+ Sync-in Server has Username/Login Enumeration via Timing Side-Channel on POST /api/auth/login (incomplete fix of the prior timing-attack advisory)
+ Moderate
+ CVE-2026-58272
+ was published
+ for
+ @sync-in/server
+ (npm)
+ Sep 22, 2026 
+ Credited to 456789TZ and johaven 
+ johaven 
+ Sync-in Server has a ReDoS via Unsanitized Regex in Sync Diff `pathFilters`
+ Moderate
+ CVE-2026-58270
+ was published
+ for
+ @sync-in/server
+ (npm)
+ Sep 22, 2026 
+ Credited to SakusenSec and johaven 
+ johaven 
+ Sync-in Server has a complete 2FA Bypass via `POST /api/auth/token`
+ High
+ CVE-2026-58269
+ was published
+ for
+ @sync-in/server
+ (npm)
+ Sep 22, 2026 
+ Credited to SakusenSec and johaven 
+ johaven 
+ @sync-in/server vulnerable to TOTP Brute-Force via `POST /api/app/sync/register`
+ Moderate
+ CVE-2026-58271
+ was published
+ for
+ @sync-in/server
+ (npm)
+ Sep 22, 2026 
+ Credited to SakusenSec and johaven 
+ johaven 
+ @roomi-fields/notebooklm-mcp has a path traversal in vault.batch tool that allows arbitrary file write outside intended vault directory
+ High
+ CVE-2026-61647
+ was published
+ for
+ @roomi-fields/notebooklm-mcp
+ (npm)
+ Sep 22, 2026 
+ Credited to mcfly-zzh 
+ nginx ignition has Unauthenticated Admin Account Creation via Onboarding Race Condition
+ High
+ CVE-2026-61628
+ was published
+ for
+ github.com/lucasdillmann/nginx-ignition
+ (Go)
+ Sep 21, 2026 
+ Credited to tikket1 and lucasdillmann 
+ lucasdillmann 
+ nginx ignition has ParseAcceptLanguage `_` separator bypass that enables ~75x CPU amplification via Accept-Language header in i18nMiddleware
+ High
+ CVE-2026-61629
+ was published
+ for
+ github.com/lucasdillmann/nginx-ignition
+ (Go)
+ Sep 21, 2026 
+ Credited to tonghuaroot and lucasdillmann 
+ lucasdillmann 
+ nginx ignition has TOTP Reuse During Validity Window
+ Moderate
+ CVE-2026-61630
+ was published
+ for
+ github.com/lucasdillmann/nginx-ignition
+ (Go)
+ Sep 21, 2026 
+ Credited to alp1n3-dev and lucasdillmann 
+ lucasdillmann 
+ k8saudit shipped rules do not detect privileged/sensitive settings on init or ephemeral containers
+ Moderate
+ GHSA-jhjp-4c2q-xmx4
+ was published
+ for
+ github.com/falcosecurity/plugins/plugins/k8saudit
+ (Go)
+ Sep 21, 2026 
+ Credited to kanywst, leogr, ekoops, and c2ndev 
+ leogr 
+ ekoops 
+ c2ndev 
+ Hatchet - Unauthenticated OAuth state CSRF / login-CSRF via empty-state collision in ValidateOAuthState
+ High
+ CVE-2026-61687
+ was published
+ for
+ hatchet
+ (Go)
+ Sep 21, 2026 
+ Credited to manop55555 
+ Obot: Server-Side Request Forgery via remote MCP server URL
+ High
+ GHSA-jgh3-fggc-mcpm
+ was published
+ for
+ github.com/obot-platform/obot
+ (Go)
+ Sep 18, 2026 
+ Credited to hewei-gikaku 
+ Obot: MCP Registry API readable without authentication
+ Moderate
+ GHSA-pr6h-vr44-xq8j
+ was published
+ for
+ github.com/obot-platform/obot
+ (Go)
+ Sep 18, 2026 
+ Credited to hewei-gikaku 
+ Obot: OAuth Dynamic Client Registration Enables API Token Theft via Audience Confusion
+ High
+ GHSA-xwmw-prc4-v3cr
+ was published
+ for
+ github.com/obot-platform/obot
+ (Go)
+ Sep 18, 2026 
+ Credited to EQSTLab and min8282 
+ min8282 
+ Paymenter has a credit-refund double-spend race condition in service downgrade (doUpgrade)
+ Moderate
+ CVE-2026-71537
+ was published
+ for
+ paymenter/paymenter
+ (Composer)
+ Sep 18, 2026 
+ Credited to Pig-Tail and CorwinDev 
+ CorwinDev 
+ Previous 1 … 400 Next 
+ Previous 1 2 3 4 5 … 399 400 Next 
+ ProTip! 
+ Advisories are also available from the 
+ GraphQL API 
+ CC-BY-4.0 License 
+ Language support 
+ About GitHub Advisory Database 
+ Footer
+ © 2026 GitHub, Inc.
+ Footer navigation
+ Terms 
+ Privacy 
+ Security 
+ Status 
+ Community 
+ Docs 
+ Contact 
+ Manage cookies
+ Do not share my personal information
+ You can’t perform that action at this time.

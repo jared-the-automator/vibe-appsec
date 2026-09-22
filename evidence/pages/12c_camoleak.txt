@@ -1,0 +1,298 @@
+ 
+ CamoLeak: Critical GitHub Copilot Vulnerability Leaks Private Source Code 
+ Next stop, secure by default. Check out the next gen of Legit and Agentic AppSec. 
+ Agentic AppSec
+ Agentic AppSec Platform Overview
+ Legit Agentic AppSec platform autonomously prioritizes and remediates the vulnerabilities that matter most and prevents new ones from being introduced at the moment AI code is generated.
+ Learn More
+ Integrations
+ Use Cases:
+ Unified Vulnerability Remediation
+ Code Security (SAST, SCA)
+ Secrets Detection & Prevention
+ Software Supply Chain Security
+ Advanced Code Change Management
+ Compliance
+ AI-Native ASPM
+ Secure AI Code
+ Secure AI Code & Apps Overview
+ AI is revolutionizing development - making it faster, smarter, and more autonomous. It’s also rewriting the rules of application security. Traditional AppSec tools weren’t designed for AI-driven dev processes. Legit is here to help.
+ Learn More
+ Use Case
+ VibeGuard
+ New 
+ MCP Server
+ AI-Powered Remediation
+ AI Visibility
+ Resources
+ Blog
+ Resource Library
+ Open Source with Legitify
+ Events
+ ASPM Knowledge Base
+ VibeGuard Resource Hub
+ Company
+ About Legit
+ Customers
+ Partners
+ Press Releases
+ In the News
+ Careers
+ Contact Us
+ Book Demo
+ Chat over Slack
+ Agentic AppSec
+ Agentic AppSec Platform Overview
+ Legit Agentic AppSec platform autonomously prioritizes and remediates the vulnerabilities that matter most and prevents new ones from being introduced at the moment AI code is generated.
+ Learn More
+ Integrations
+ Use Cases:
+ Unified Vulnerability Remediation
+ Code Security (SAST, SCA)
+ Secrets Detection & Prevention
+ Software Supply Chain Security
+ Advanced Code Change Management
+ Compliance
+ AI-Native ASPM
+ Secure AI Code
+ Secure AI Code & Apps Overview
+ AI is revolutionizing development - making it faster, smarter, and more autonomous. It’s also rewriting the rules of application security. Traditional AppSec tools weren’t designed for AI-driven dev processes. Legit is here to help.
+ Learn More
+ Use Case
+ VibeGuard
+ New 
+ MCP Server
+ AI-Powered Remediation
+ AI Visibility
+ Resources
+ Blog
+ Resource Library
+ Open Source with Legitify
+ Events
+ ASPM Knowledge Base
+ VibeGuard Resource Hub
+ Company
+ About Legit
+ Customers
+ Partners
+ Press Releases
+ In the News
+ Careers
+ Contact Us
+ Request a Demo 
+ Sign In
+ Solutions
+ Solutions
+ Legit is an AI-native ASPM platform that automates AppSec issue discovery, prioritization, and remediation. A trusted ASPM vendor for your AppSec and software supply chain security programs.
+ Learn More
+ Use Cases:
+ Unified Vulnerability Management
+ Code Security (SAST, SCA) & Supply Chain
+ Software Supply Chain Security
+ AI Security & Visibility
+ Advanced Code Change Management
+ Compliance & Governance
+ Platform
+ AI-Native AppSecOverview
+ AI is revolutionizing development - making it faster, smarter, and more autonomous. It’s also rewriting the rules of application security. Traditional AppSec tools weren’t designed for AI-driven dev processes. Legit is here to help.
+ Learn More
+ Use Cases:
+ VibeGuard
+ New 
+ Security For AI Code Assistants
+ AI-Powered Remediation
+ AI Security Command Center
+ Pricing
+ Plans & Packages
+ Contact Sales
+ Why Legit
+ About Legit
+ Customer Stories
+ Partner Program
+ Press Releases & Industry Recognition
+ In The News
+ Careers
+ Contact Us
+ Resources
+ Blog
+ Events
+ Resource Library
+ Open Source with Legitify
+ ASPM Knowledge Base
+ Book a Demo
+ Solutions
+ Solutions
+ Legit is an AI-native ASPM platform that automates AppSec issue discovery, prioritization, and remediation. A trusted ASPM vendor for your AppSec and software supply chain security programs.
+ Learn More
+ Use Cases:
+ Unified Vulnerability Management
+ Code Security (SAST, SCA) & Supply Chain
+ Software Supply Chain Security
+ AI Security & Visibility
+ Advanced Code Change Management
+ Compliance & Governance
+ Platform
+ AI-Native AppSecOverview
+ AI is revolutionizing development - making it faster, smarter, and more autonomous. It’s also rewriting the rules of application security. Traditional AppSec tools weren’t designed for AI-driven dev processes. Legit is here to help.
+ Learn More
+ Use Cases:
+ VibeGuard
+ New 
+ Security For AI Code Assistants
+ AI-Powered Remediation
+ AI Security Command Center
+ Pricing
+ Plans & Packages
+ Contact Sales
+ Why Legit
+ About Legit
+ Customer Stories
+ Partner Program
+ Press Releases & Industry Recognition
+ In The News
+ Careers
+ Contact Us
+ Resources
+ Blog
+ Events
+ Resource Library
+ Open Source with Legitify
+ ASPM Knowledge Base
+ Request a Demo 
+ Sign In
+ Legit Security 
+ AppSec 
+ CamoLeak: Critical GitHub Copilot Vulnerability Leaks Private Source Code 
+ Blog
+ CamoLeak: Critical GitHub Copilot Vulnerability Leaks Private Source Code 
+ Book a Demo
+ Written by 
+ Omer Mayraz
+ Published on 
+ October 08, 2025
+ Updated on 
+ February 12, 2026
+ In this article
+ Sign up for our newsletter
+ SHARE: 
+ Get details on our discovery of a critical vulnerability in GitHub Copilot Chat. 
+ TL;DR: 
+ In June 2025, I found a critical vulnerability in GitHub Copilot Chat (CVSS 9.6) that allowed silent exfiltration of secrets and source code from private repos, and gave me full control over Copilot’s responses, including suggesting malicious code or links. 
+ The attack combined  a novel CSP bypass using GitHub’s own infrastructure  with  remote prompt injection.  I reported it via HackerOne, and GitHub fixed it by disabling image rendering in Copilot Chat completely. 
+ Background 
+ GitHub Copilot Chat is an AI assistant built into GitHub that helps developers by answering questions, explaining code, and suggesting implementations directly in their workflow. 
+ Copilot Chat is context-aware: it can use information from the repository (such as code, commits, or pull requests) to provide tailored answers. 
+ As always,  more context = more attack surface. 
+ Finding the prompt injection
+ As mentioned earlier, GitHub Copilot is context-aware - so I set out to make it notice me. To do this, I embedded a prompt directed at Copilot inside a pull request description.
+ But what’s the point if everyone can see it? Luckily, GitHub came to the rescue with a proper solution:  invisible comments are an official feature!   🎉 
+ You can find more details in their documentation:  Hiding content with comments . By simply putting the content you want to hide inside: 
+ I tried the same prompt but this time as a hidden comment inside the PR description,   and it worked! 
+ Interestingly, posting a hidden comment triggers the usual PR notification to the repo owner, but the content of the hidden comment isn’t revealed anywhere. 
+ I attempted logging in with a different user and visited the pull request page. The prompt was injected into my context as well!  
+ I then replaced the original “HOORAY” prompt with far more complex instructions, including code suggestions and Markdown rendering,  and to my surprise, they worked flawlessly! 
+ For instance, notice how effortlessly Copilot suggests this malicious  Copilotevil  package. 
+ * Notice that the user who asked Copilot Chat to explain the PR is different from the user who posted the invisible prompt, demonstrating that the prompt can affect any user who visits the page. 
+ Copilot operates with the same permissions as the user making the request , but it obviously needs access to the user’s private repositories to respond accurately. We can exploit this by including instructions in our injected prompt to access a victim user’s private repository, encode its contents in base16, and append it to a URL. Then, when the user clicks the URL, the data is exfiltrated back to us. 
+ * Notice that the repository https://github.com/LegitSecurity/issues-service is a private repo inside a private GitHub organization! 
+ See the Legit AI-Native ASPM Platform in Action
+ Find out how we are helping enterprises like yours secure AI-generated code.
+ Request a Demo
+ Recap: What We Can Do 
+ Influence the responses generated by another user’s Copilot
+ Inject custom Markdown, including URLs, code, and images
+ Exploit the fact that Copilot runs with the same permissions as the victim user 
+ Bypassing Content Security Policy (CSP) 
+ This is where things get tricky. If you’ve followed along so far, you’re probably thinking — just inject an HTML  <img>  tag into the victim’s chat, encode their private data as a parameter, and once the browser tries to render it, the data will be leaked. 
+ Not so fast. GitHub enforces a very restrictive Content Security Policy (CSP), which blocks fetching images and other content types from domains that aren’t explicitly owned by GitHub. So, our “simple”  <img>  trick won’t work out of the box. 
+ You’re probably asking yourself -  wait, how does my fancy README manage to show images from third-party sites? 
+ When you commit a README or any Markdown file containing external images, GitHub automatically processes the file, during this process: 
+ GitHub parses the Markdown and identifies any image URLs pointing to domains outside of GitHub.
+ URL rewriting via Camo: Each external URL is rewritten to a Camo proxy URL. This URL includes a HMAC-based cryptographic signature and points to  https://camo.githubusercontent.com/ …. 
+ Signed request verification: When a browser requests the image, the Camo proxy verifies the signature to ensure it was generated by GitHub. Only valid, signed URLs are allowed.
+ Content fetching: If the signature is valid, Camo fetches the external image from its original location and serves it through GitHub’s servers.
+ This process ensures that:
+ Attackers cannot craft arbitrary URLs to exfiltrate dynamic data.
+ All external images go through a controlled proxy, maintaining security and integrity.
+ The end user sees the image seamlessly in the README, but the underlying URL never exposes the original domain directly.
+ More information about Camo can be found  here . 
+ Let’s look at an example: Committing a README file to GitHub that contains this URL: 
+ Will be automatically changed inside the README into: 
+ Rather than doing it manually through the website, you can use GitHub’s REST API to submit raw Markdown and receive it back with all external image URLs automatically converted to Camo proxy URLs. 
+ Alright, so we can’t generate Camo URLs on the fly — without code execution, every  <img> tag we inject into the victim’s chat must include a valid Camo URL signature that was pre-generated. Otherwise, GitHub’s reverse proxy won’t fetch the content. 
+ The discovery 
+ I spent a long time thinking about this problem before this crazy idea struck me. If I create a dictionary of all letters and symbols in the alphabet, pre-generate their corresponding Camo URLs, embed this dictionary into the injected prompt, and then ask Copilot to play a “small game” by rendering the content I want to leak as “ASCII art” composed entirely of images, will Copilot inject valid Camo images that the browser will render by their order?  Yes, it will. 
+ I quickly got to work. First, I set up a web server that responds to every request with a 1x1 transparent pixel. This way, when GitHub’s Camo reverse proxy fetches the images from my server, they remain invisible in the victim’s chat. 
+ Next, by using GitHub’s API, I created a valid Camo URL dictionary of all the letters and symbols that may be used to leak source code / issues content: 
+ Turns into: 
+ And finally, I created the prompt: 
+ * I added "random" parameter at the end of each Camo URL and requested Copilot to generate each time a new random number and append it to the URL, this way caching is not a problem. 
+ Our target:  the description of a zero-day vulnerability inside an issue of a private project. 
+ The result:  Stealing zero days from private repositories. 
+ PoC showcasing the full attack (Only if you have 4 minutes): 
+ I also managed to get Copilot to search the victim’s entire codebase for the keyword  "AWS_KEY" and exfiltrate the result. 
+ GitHub’s Response 
+ GitHub reports that the vulnerability was fixed as of August 14. 
+ To learn more 
+ Get details on a previous vulnerability we unearthed in GitLab Duo.
+ Get our thoughts on AppSec in the age of AI .
+ Need guidance on AppSec for AI-generated code?
+ Download our new whitepaper.
+ Written by 
+ Omer Mayraz
+ Share this guide
+ Published on October 08, 2025
+ -->
+ Blog 
+ Related posts
+ -->
+ See More
+ -->
+ ASPM Knowledge Base related landing pages -->
+ ASPM Knowledge Base
+ -->
+ A Foundation You Can Trust
+ Get a stronger AppSec foundation you can trust and prove it’s doing the job right.
+ Request a Demo
+ See the Legit AI-Native ASPM Platform in Action
+ Find out how we are helping enterprises like yours secure AI-generated code.
+ Request a Demo
+ Need guidance on AppSec for AI-generated code?
+ Download our new whitepaper.
+ Platform
+ Unified Vulnerability Remediation
+ Code Scanning (SAST, SCA)
+ Secrets Detection & Prevention
+ Software Supply Chain Security
+ Advanced Code Change Management
+ Compliance
+ Company
+ Partners
+ Customers
+ About Us
+ Careers
+ News
+ Events
+ Contact Us
+ Resources
+ Blog
+ Resource Library
+ Open Source
+ Compare
+ OX Security
+ ArmorCode
+ Apiiro
+ Cycode
+ Learn
+ ASPM Knowledge Base
+ SDLC Security
+ DevOps Security
+ GitHub Security
+ Secure Software
+ Supply Chain
+ Application Security Posture Management
+ Sitemap
+ Privacy Policy
+ Terms of Use
+ © 2025 Legit Security
+ 
