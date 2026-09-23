@@ -3,15 +3,15 @@
 A portable security skill for AI coding agents that hardens **AI-generated
 ("vibe-coded") applications** before they meet real users.
 
-Most AI coding agents can review code for security — but generic review misses
+Most AI coding agents can review code for security, but generic review misses
 the *specific* things LLM-generated apps actually ship: JWTs that accept
 `alg:none`, OAuth logins with open redirects, Cloudflare-fronted apps whose
 origin IP leaked, default connection strings in production, dependencies that
 phoned home with your env vars, transactional emails that render user input as
 HTML. This skill exists to close that gap.
 
-Every rule is **grounded in a primary source** — an OWASP cheat sheet, an IETF
-RFC, a NVD CVE entry, or a published vendor advisory — with verbatim quotes in
+Every rule is **grounded in a primary source**, i.e. an OWASP cheat sheet, an IETF
+RFC, a NVD CVE entry, or a published vendor advisory, with verbatim quotes in
 `references/`. No control numbers from memory, no invented CVEs, no unsourced
 statistics. If a claim can't be tied to a fetched source, it isn't in the skill.
 
