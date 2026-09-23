@@ -79,11 +79,9 @@ map findings to their grounded control, fix, re-scan.
 
 ## Provenance
 
-This skill was distilled from a 316-post public security corpus (an active
-creator's production-hardening content for vibe-coders) and every claim was
-re-grounded to its primary source before inclusion. The creator's content is
-**not** reproduced — only the underlying principles, each traced to
-OWASP/IETF/NVD/vendor documentation. The citation ledger and verbatim evidence
+This skill was distilled from a 316-post public security corpus and every claim was
+re-grounded to its primary source before inclusion to demonstrate the underlying principles, 
+each traced to OWASP/IETF/NVD/vendor documentation. The citation ledger and verbatim evidence
 snapshots live in `evidence/` for audit.
 
 ## Sources
